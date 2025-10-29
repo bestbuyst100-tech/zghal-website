@@ -1,0 +1,62 @@
+/* === Vente Page Specific Styles === */
+
+.vente-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card-vente {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card-vente:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.product-card-vente__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card-vente__content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-card-vente__title {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.product-card-vente__description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Makes the description fill available space */
+}
+
+.product-card-vente__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.product-card-vente__price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--first-color);
+}

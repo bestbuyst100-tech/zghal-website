@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Zghal Climatisation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="container" style="max-width: 480px;">
+            <h1 class="section__title">Accès Administrateur</h1>
+            
+            <form action="/login" method="POST" class="contact__form">
+                <div class="form__group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form__group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="button" style="width: 100%;">Se Connecter</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

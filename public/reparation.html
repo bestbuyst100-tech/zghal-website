@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réparation Électroménager - Zghal Climatisation</title>
+    <meta name="description" content="Service de réparation pour machines à laver, sèche-linges, réfrigérateurs et autres appareils électroménagers.">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="service-page.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Accueil</a></li>
+                    <li><a href="/#services" class="nav__link">Services</a></li>
+                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header__contact">
+                <span class="header__phone">📞 44 882 490</span>
+                <a href="/contact.html" class="button button--small">Devis Gratuit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="service-hero">
+            <div class="service-hero__overlay"></div>
+            <img src="https://images.unsplash.com/photo-1626802235948-b342c27b3457?q=80&w=2070&auto=format&fit=crop" alt="Réparation Électroménager" class="service-hero__image">
+            <div class="service-hero__content container">
+                <h1 class="service-hero__title">Réparation Électroménager</h1>
+            </div>
+        </section>
+
+        <section class="section service-details">
+            <div class="container service-details__grid">
+                <div class="service-details__description">
+                    <h2>Redonnez vie à vos appareils ménagers.</h2>
+                    <p>
+                        Un appareil électroménager en panne peut perturber toute l'organisation de la maison. Avant de penser à le remplacer, faites appel à nos experts pour un diagnostic précis et une réparation économique.
+                    </p>
+                    <h3>Nous réparons une large gamme d'appareils :</h3>
+                    <ul>
+                        <li><i class='bx bx-check-shield'></i> Machines à laver et sèche-linges (problèmes de vidange, d'essorage, etc. ).</li>
+                        <li><i class='bx bx-check-shield'></i> Réfrigérateurs et congélateurs (problèmes de froid, fuites, bruits).</li>
+                        <li><i class='bx bx-check-shield'></i> Compresseurs d'air et autres équipements.</li>
+                        <li><i class='bx bx-check-shield'></i> Diagnostic de pannes et remplacement de pièces défectueuses.</li>
+                    </ul>
+                    <p>
+                        Nous intervenons sur la plupart des grandes marques pour vous offrir une solution rapide et durable.
+                    </p>
+                </div>
+                <div class="service-details__contact-form">
+                    <h3>Demander ce service</h3>
+                    <form id="service-request-form" class="contact__form" style="box-shadow: none; padding: 0;">
+                        <input type="hidden" name="service" value="Réparation Électroménager">
+                        <div class="form__group">
+                            <label for="name">Votre Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="phone">Votre Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="city">Votre Ville</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
+                    </form>
+                    <div id="form-feedback" style="margin-top: 1rem; text-align: center;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="form-submit.js"></script>
+</body>
+</html>

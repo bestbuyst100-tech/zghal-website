@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vente de Matériel - Zghal Climatisation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vente.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Accueil</a></li>
+                    <li><a href="/#services" class="nav__link">Services</a></li>
+                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header__contact">
+                <span class="header__phone">📞 44 882 490</span>
+                <a href="/contact.html" class="button button--small">Devis Gratuit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <h1 class="section__title">Nos Produits Disponibles à la Vente</h1>
+            <p class="section__subtitle">Matériel de haute qualité pour vos installations de climatisation et de chauffage.</p>
+            
+            <div id="product-list-vente" class="vente-grid">
+                <!-- المنتجات ستظهر هنا بواسطة JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productListDiv = document.getElementById('product-list-vente');
+
+            async function fetchAndDisplayProducts() {
+                productListDiv.innerHTML = '<p>Chargement des produits...</p>';
+
+                try {
+                    const response = await fetch('/api/products');
+                    if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
+                    
+                    const products = await response.json();
+                    productListDiv.innerHTML = ''; 
+
+                    if (products.length === 0) {
+                        productListDiv.innerHTML = '<p>Aucun produit disponible à la vente pour le moment.</p>';
+                        return;
+                    }
+
+                    products.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card-vente';
+                        
+                        productCard.innerHTML = `
+                            <img src="${product.imageUrl}" alt="${product.name}" class="product-card-vente__image">
+                            <div class="product-card-vente__content">
+                                <h3 class="product-card-vente__title">${product.name}</h3>
+                                <p class="product-card-vente__description">${product.description}</p>
+                                <div class="product-card-vente__footer">
+                                    <span class="product-card-vente__price">${product.price} TND</span>
+                                    <a href="/commander.html?produit=${encodeURIComponent(product.name + ' (' + product.price + ' TND)')}" class="button button--small">Commander</a>
+                                </div>
+                            </div>
+                        `;
+                        productListDiv.appendChild(productCard);
+                    });
+                } catch (error) {
+                    productListDiv.innerHTML = `<p style="color: red; font-weight: bold;">Impossible de charger les produits. Veuillez réessayer plus tard.</p>`;
+                    console.error('Erreur:', error);
+                }
+            }
+            fetchAndDisplayProducts();
+        });
+    </script>
+</body>
+</html>

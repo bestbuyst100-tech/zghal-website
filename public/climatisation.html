@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation et Réparation Climatisation - Zghal Climatisation</title>
+    <meta name="description" content="Service expert en installation, réparation et maintenance de climatiseurs de toutes marques à Tunis, Sfax, et Sousse. Devis gratuit.">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="service-page.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Accueil</a></li>
+                    <li><a href="/#services" class="nav__link">Services</a></li>
+                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header__contact">
+                <span class="header__phone">📞 44 882 490</span>
+                <a href="/contact.html" class="button button--small">Devis Gratuit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="service-hero">
+            <div class="service-hero__overlay"></div>
+            <img src="https://images.unsplash.com/photo-1615529329339-c394759441ac?q=80&w=2070&auto=format&fit=crop" alt="Climatisation" class="service-hero__image">
+            <div class="service-hero__content container">
+                <h1 class="service-hero__title">Climatisation</h1>
+            </div>
+        </section>
+
+        <section class="section service-details">
+            <div class="container service-details__grid">
+                <div class="service-details__description">
+                    <h2>Un air frais et pur pour un confort optimal.</h2>
+                    <p>
+                        Que ce soit pour affronter les étés chauds ou pour maintenir une température agréable toute l'année, un climatiseur performant est indispensable. Zghal Climatisation est votre partenaire de confiance pour l'installation, la réparation et l'entretien de tous vos systèmes de climatisation.
+                    </p>
+                    <h3>Nos prestations pour la climatisation :</h3>
+                    <ul>
+                        <li><i class='bx bx-check-shield'></i> Installation de climatiseurs Split, Multi-split et centraux.</li>
+                        <li><i class='bx bx-check-shield'></i> Maintenance préventive et nettoyage des filtres pour un air sain.</li>
+                        <li><i class='bx bx-check-shield'></i> Recherche de fuites et recharge de gaz réfrigérant.</li>
+                        <li><i class='bx bx-check-shield'></i> Réparation de toutes pannes (problèmes de démarrage, de refroidissement, bruits ).</li>
+                    </ul>
+                    <p>
+                        Nous intervenons sur toutes les marques et vous garantissons une solution rapide et efficace pour retrouver votre confort.
+                    </p>
+                </div>
+                <div class="service-details__contact-form">
+                    <h3>Demander ce service</h3>
+                    <form id="service-request-form" class="contact__form" style="box-shadow: none; padding: 0;">
+                        <input type="hidden" name="service" value="Climatisation">
+                        <div class="form__group">
+                            <label for="name">Votre Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="phone">Votre Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="city">Votre Ville</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
+                    </form>
+                    <div id="form-feedback" style="margin-top: 1rem; text-align: center;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="form-submit.js"></script>
+</body>
+</html>

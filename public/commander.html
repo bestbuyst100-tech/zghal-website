@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander un Produit - Zghal Climatisation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+         <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Accueil</a></li>
+                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="container" style="max-width: 768px;">
+            <h1 class="section__title">Confirmer Votre Commande</h1>
+            <p class="section__subtitle">Veuillez remplir vos informations pour finaliser la commande.</p>
+            
+            <form id="order-form" class="contact__form">
+                <div class="form__group">
+                    <label for="produit">Produit sélectionné</label>
+                    <input type="text" id="produit" name="produit" readonly style="background-color: #e9ecef;">
+                </div>
+                <div class="form__group">
+                    <label for="name">Votre Nom Complet</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form__group">
+                    <label for="phone">Votre Numéro de Téléphone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form__group">
+                    <label>Option de livraison</label>
+                    <div>
+                        <input type="radio" id="retrait" name="livraison" value="Retrait sur place" checked>
+                        <label for="retrait">Retrait sur place</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="domicile" name="livraison" value="Livraison à domicile">
+                        <label for="domicile">Livraison à domicile</label>
+                    </div>
+                </div>
+                <div class="form__group" id="adresse-group">
+                    <label for="adresse">Votre Adresse de Livraison</label>
+                    <textarea id="adresse" name="adresse" rows="3"></textarea>
+                </div>
+                <button type="submit" class="button" style="width: 100%;">Confirmer la Commande</button>
+            </form>
+            <div id="form-feedback" style="margin-top: 1.5rem; text-align: center;"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get product name from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const produit = urlParams.get('produit');
+            if (produit) {
+                document.getElementById('produit').value = produit;
+            }
+
+            // Show/hide address field
+            const adresseGroup = document.getElementById('adresse-group');
+            const adresseTextarea = document.getElementById('adresse');
+            document.querySelectorAll('input[name="livraison"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'Livraison à domicile') {
+                        adresseGroup.style.display = 'block';
+                        adresseTextarea.required = true;
+                    } else {
+                        adresseGroup.style.display = 'none';
+                        adresseTextarea.required = false;
+                    }
+                });
+            });
+
+            // Form submission
+            const form = document.getElementById('order-form');
+            const feedbackDiv = document.getElementById('form-feedback');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                feedbackDiv.textContent = 'Envoi de la commande...';
+                feedbackDiv.style.color = 'black';
+
+                try {
+                    const response = await fetch('/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                    if (response.ok) {
+                        form.style.display = 'none';
+                        feedbackDiv.innerHTML = '<h2 style="color: green;">Commande envoyée avec succès!</h2><p>Merci pour votre confiance. Nous vous contacterons très prochainement pour confirmer les détails.</p>';
+                    } else { throw new Error('Erreur du serveur.'); }
+                } catch (error) {
+                    feedbackDiv.innerHTML = '<p style="color: red; font-weight: bold;">Une erreur de connexion est survenue. Veuillez réessayer.</p>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

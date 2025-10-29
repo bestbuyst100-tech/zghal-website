@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Zghal Climatisation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Accueil</a></li>
+                    <li><a href="/#services" class="nav__link">Services</a></li>
+                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header__contact">
+                <span class="header__phone">📞 44 882 490</span>
+                <a href="/contact.html" class="button button--small">Devis Gratuit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="container" style="max-width: 768px;">
+            <h1 class="section__title">Contactez-nous</h1>
+            <p class="section__subtitle">Pour toute demande de devis ou d'information, veuillez remplir le formulaire ci-dessous.</p>
+            
+            <form id="contact-form" class="contact__form">
+                <div class="form__group">
+                    <label for="name">Votre Nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form__group">
+                    <label for="phone">Votre Téléphone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form__group">
+                    <label for="city">Votre Ville</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form__group">
+                    <label for="service">Service Souhaité</label>
+                    <select id="service" name="service" required>
+                        <option value="" disabled selected>-- Choisissez un service --</option>
+                        <option value="Climatisation">Climatisation</option>
+                        <option value="Chauffage Central">Chauffage Central</option>
+                        <option value="Plomberie">Plomberie</option>
+                        <option value="Gaz de ville">Gaz de ville</option>
+                        <option value="Chaudière">Chaudière</option>
+                        <option value="Réparation Electroménager">Réparation Electroménager</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form__group">
+                    <label for="notes">Votre Message (Optionnel)</label>
+                    <textarea id="notes" name="notes" rows="5"></textarea>
+                </div>
+                <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
+            </form>
+            <div id="form-feedback" style="margin-top: 1.5rem; text-align: center;"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const feedbackDiv = document.getElementById('form-feedback');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            feedbackDiv.textContent = 'Envoi en cours...';
+            feedbackDiv.style.color = 'black';
+
+            try {
+                const response = await fetch('/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    form.reset();
+                    feedbackDiv.innerHTML = '<p style="color: green; font-weight: bold;">Merci! Votre demande a été envoyée. Nous vous contacterons bientôt.</p>';
+                } else {
+                    throw new Error('Erreur du serveur.');
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+                feedbackDiv.innerHTML = '<p style="color: red; font-weight: bold;">Une erreur de connexion est survenue. Veuillez réessayer.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

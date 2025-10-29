@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Gaz de Ville - Zghal Climatisation</title>
+    <meta name="description" content="Service d'installation de conduites de gaz de ville sécurisé et conforme aux normes pour les particuliers et professionnels.">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="service-page.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Accueil</a></li>
+                    <li><a href="/#services" class="nav__link">Services</a></li>
+                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header__contact">
+                <span class="header__phone">📞 44 882 490</span>
+                <a href="/contact.html" class="button button--small">Devis Gratuit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="service-hero">
+            <div class="service-hero__overlay"></div>
+            <img src="https://plus.unsplash.com/premium_photo-1661371972396-32b7b7a6d8d6?q=80&w=2070&auto=format&fit=crop" alt="Gaz de ville" class="service-hero__image">
+            <div class="service-hero__content container">
+                <h1 class="service-hero__title">Gaz de Ville</h1>
+            </div>
+        </section>
+
+        <section class="section service-details">
+            <div class="container service-details__grid">
+                <div class="service-details__description">
+                    <h2>Une énergie pratique et économique, installée en toute sécurité.</h2>
+                    <p>
+                        Le raccordement au gaz de ville est une solution énergétique moderne et efficace. Notre équipe est certifiée pour réaliser des installations complètes, en respectant les normes de sécurité les plus strictes pour votre tranquillité d'esprit.
+                    </p>
+                    <h3>Nos prestations pour le gaz de ville :</h3>
+                    <ul>
+                        <li><i class='bx bx-check-shield'></i> Étude de faisabilité et conception du réseau de tuyauterie.</li>
+                        <li><i class='bx bx-check-shield'></i> Installation des conduites de gaz internes et externes.</li>
+                        <li><i class='bx bx-check-shield'></i> Raccordement de vos appareils (chaudière, cuisinière, chauffe-eau ).</li>
+                        <li><i class='bx bx-check-shield'></i> Tests d'étanchéité et mise en service de l'installation.</li>
+                    </ul>
+                    <p>
+                        La sécurité est notre priorité absolue. Nous garantissons une installation fiable et durable.
+                    </p>
+                </div>
+                <div class="service-details__contact-form">
+                    <h3>Demander ce service</h3>
+                    <form id="service-request-form" class="contact__form" style="box-shadow: none; padding: 0;">
+                        <input type="hidden" name="service" value="Gaz de ville">
+                        <div class="form__group">
+                            <label for="name">Votre Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="phone">Votre Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="city">Votre Ville</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
+                    </form>
+                    <div id="form-feedback" style="margin-top: 1rem; text-align: center;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="form-submit.js"></script>
+</body>
+</html>

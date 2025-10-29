@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Zghal Climatisation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/dashboard.html" class="nav__logo">Dashboard Admin</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/dashboard.html" class="nav__link">Gérer les Produits</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="container dashboard-grid">
+            <!-- الجزء الأيسر: إضافة منتج -->
+            <div class="dashboard__form-container">
+                <h2 class="section__title" style="font-size: var(--h2-font-size); text-align: left;">Ajouter un Produit</h2>
+                <form id="add-product-form" class="dashboard__form">
+                    <div class="form__group">
+                        <label for="name">Nom du produit</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="price">Prix (TND)</label>
+                        <input type="number" id="price" name="price" step="0.01" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form__group">
+                        <label for="image">Image du produit</label>
+                        <input type="file" id="image" name="image" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="button">Ajouter le produit</button>
+                    <div id="feedback" style="margin-top: 1rem; font-weight: bold;"></div>
+                </form>
+            </div>
+
+            <!-- الجزء الأيمن: قائمة المنتجات -->
+            <div class="dashboard__list-container">
+                <h2 class="section__title" style="font-size: var(--h2-font-size); text-align: left;">Liste des Produits</h2>
+                <div id="product-list" class="product-list-grid">
+                    <!-- المنتجات ستظهر هنا بواسطة JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productList = document.getElementById('product-list');
+            const addProductForm = document.getElementById('add-product-form');
+            const feedbackDiv = document.getElementById('feedback');
+
+            // --- وظيفة جلب وعرض المنتجات ---
+            async function fetchAndDisplayProducts() {
+                try {
+                    const response = await fetch('/api/products');
+                    if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
+                    
+                    const products = await response.json();
+                    productList.innerHTML = ''; 
+
+                    if (products.length === 0) {
+                        productList.innerHTML = '<p>Aucun produit à afficher pour le moment.</p>';
+                        return;
+                    }
+
+                    products.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.className = 'product-item';
+                        productItem.innerHTML = `
+                            <img src="${product.imageUrl}" alt="${product.name}">
+                            <div class="product-item__info">
+                                <h4>${product.name}</h4>
+                                <p>${product.price} TND</p>
+                            </div>
+                            <div class="product-item__actions">
+                                <a href="/edit-product.html?id=${product._id}" class="button button--small">Modifier</a>
+                                <button class="button button--small" style="background-color: #dc3545;" onclick="deleteProduct('${product._id}')">Supprimer</button>
+                            </div>
+                        `;
+                        productList.appendChild(productItem);
+                    });
+                } catch (error) {
+                    productList.innerHTML = `<p style="color: red;">Erreur lors du chargement des produits.</p>`;
+                    console.error('Erreur:', error);
+                }
+            }
+
+            // --- وظيفة حذف منتج ---
+            window.deleteProduct = async function(id) {
+                if (!confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) return;
+                
+                try {
+                    const response = await fetch(`/api/products/${id}`, { method: 'DELETE' });
+                    if (response.ok) {
+                        fetchAndDisplayProducts(); // إعادة تحميل القائمة
+                    } else {
+                        alert('Erreur lors de la suppression.');
+                    }
+                } catch (error) {
+                    alert('Erreur de connexion.');
+                }
+            }
+
+            // --- إضافة منتج جديد ---
+            addProductForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                feedbackDiv.textContent = 'Ajout du produit en cours...';
+                feedbackDiv.style.color = 'black';
+                const formData = new FormData(addProductForm);
+
+                try {
+                    const response = await fetch('/api/products', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (response.ok) {
+                        feedbackDiv.textContent = 'Produit ajouté avec succès !';
+                        feedbackDiv.style.color = 'green';
+                        addProductForm.reset();
+                        fetchAndDisplayProducts(); // إعادة تحميل القائمة
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Erreur du serveur');
+                    }
+                } catch (error) {
+                    feedbackDiv.textContent = `Erreur: ${error.message}`;
+                    feedbackDiv.style.color = 'red';
+                }
+            });
+
+            // --- عرض المنتجات عند تحميل الصفحة ---
+            fetchAndDisplayProducts();
+        });
+    </script>
+</body>
+</html>

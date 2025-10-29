@@ -1,0 +1,84 @@
+/* === Dashboard Specific Styles === */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1/3 for form, 2/3 for list */
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.dashboard__form-container,
+.dashboard__list-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard__form .form__group {
+    margin-bottom: 1.5rem;
+}
+
+.dashboard__form label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.dashboard__form input,
+.dashboard__form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.product-list-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column layout */
+    gap: 1.5rem;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.product-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-item__info {
+    flex-grow: 1;
+}
+
+.product-item__info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.product-item__info p {
+    margin: 0;
+    color: var(--first-color);
+    font-weight: bold;
+}
+
+.product-item__actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

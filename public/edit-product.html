@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Produit - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/dashboard.html" class="nav__logo">Dashboard Admin</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/dashboard.html" class="nav__link">Retour à la liste</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="container" style="max-width: 768px;">
+            <h1 class="section__title">Modifier le Produit</h1>
+            
+            <form id="edit-product-form" class="dashboard__form" style="background-color: var(--container-color); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <input type="hidden" id="productId">
+                <div class="form__group">
+                    <label for="name">Nom du produit</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form__group">
+                    <label for="price">Prix (TND)</label>
+                    <input type="number" id="price" name="price" step="0.01" required>
+                </div>
+                <div class="form__group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <div class="form__group">
+                    <label for="image">Changer l'image (Optionnel)</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                    <p style="margin-top: 1rem;">Image actuelle :</p>
+                    <img id="current-image" src="" alt="Image actuelle" style="max-width: 150px; margin-top: 0.5rem; border-radius: 4px;">
+                </div>
+                <button type="submit" class="button">Mettre à jour le produit</button>
+                <div id="feedback" style="margin-top: 1rem; font-weight: bold;"></div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const form = document.getElementById('edit-product-form');
+            const feedbackDiv = document.getElementById('feedback');
+            const productIdInput = document.getElementById('productId');
+            const nameInput = document.getElementById('name');
+            const priceInput = document.getElementById('price');
+            const descriptionInput = document.getElementById('description');
+            const currentImage = document.getElementById('current-image');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            productIdInput.value = productId;
+
+            // --- جلب بيانات المنتج الحالية ---
+            try {
+                const response = await fetch(`/api/products/${productId}`);
+                if (!response.ok) throw new Error('Produit non trouvé');
+                const product = await response.json();
+
+                nameInput.value = product.name;
+                priceInput.value = product.price;
+                descriptionInput.value = product.description;
+                currentImage.src = product.imageUrl;
+
+            } catch (error) {
+                form.innerHTML = `<p style="color: red;">${error.message}</p>`;
+            }
+
+            // --- إرسال التحديثات ---
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                feedbackDiv.textContent = 'Mise à jour en cours...';
+                feedbackDiv.style.color = 'black';
+                const formData = new FormData(form);
+                
+                try {
+                    const response = await fetch(`/api/products/${productId}`, {
+                        method: 'PUT',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        feedbackDiv.textContent = 'Produit mis à jour avec succès ! Redirection...';
+                        feedbackDiv.style.color = 'green';
+                        setTimeout(() => {
+                            window.location.href = '/dashboard.html';
+                        }, 2000);
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Erreur du serveur');
+                    }
+                } catch (error) {
+                    feedbackDiv.textContent = `Erreur: ${error.message}`;
+                    feedbackDiv.style.color = 'red';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

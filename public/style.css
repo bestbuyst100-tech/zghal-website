@@ -1,0 +1,271 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap' );
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  --first-color: #007bff; /* Un bleu vif et professionnel */
+  --first-color-alt: #0056b3;
+  --second-color: #ff8c00; /* Orange pour l'énergie (chauffage) */
+  --title-color: #333;
+  --text-color: #555;
+  --text-color-light: #888;
+  --body-color: #f8f9fa; /* Un fond très légèrement gris */
+  --container-color: #fff;
+  --border-color: #dee2e6;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.75rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--first-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+
+  /* === الأسطر الجديدة التي يجب إضافتها === */
+  max-width: 1400px; /* تحديد أقصى عرض للموقع */
+  margin: 0 auto;   /* توسيط الموقع في الشاشة */
+  box-shadow: 0 0 20px rgba(0,0,0,0.1); /* إضافة ظل خفيف لإبراز الموقع */
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+/* ... باقي الكود يبقى كما هو ... */
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1024px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.section {
+  padding: 4.5rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section__subtitle {
+    text-align: center;
+    color: var(--text-color-light);
+    margin-bottom: 2rem;
+    margin-top: -1.5rem;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  width: 100%;
+  background-color: var(--container-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  font-weight: var(--font-bold);
+  font-size: 1.2rem;
+  color: var(--title-color);
+}
+
+.nav__list {
+  display: flex;
+  column-gap: 2.5rem;
+}
+
+.nav__link {
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  transition: .3s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.header__contact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header__phone {
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+}
+
+/*=============== BUTTONS ===============*/
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: .8rem 1.5rem;
+  border-radius: .5rem;
+  font-weight: var(--font-medium);
+  transition: .3s;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--first-color-alt);
+}
+
+.button--small {
+    padding: .6rem 1rem;
+    font-size: var(--small-font-size);
+}
+
+.button--large {
+    padding: 1rem 2rem;
+    font-size: var(--h3-font-size);
+}
+
+/*=============== FOOTER ===============*/
+.footer {
+  background-color: #343a40;
+  color: #f8f9fa;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer__container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+/*=============== FORMS ===============*/
+.contact__form {
+    background-color: var(--container-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form__group {
+    margin-bottom: 1.5rem;
+}
+
+.form__group label {
+    font-weight: var(--font-medium);
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.form__group input,
+.form__group textarea,
+.form__group select {
+    width: 100%;
+    padding: .8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+.form__group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Hide address field by default */
+#adresse-group {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    display: none; /* Simple hiding for mobile, can be improved with a toggle */
+  }
+  .section {
+    padding: 3.5rem 0 1rem;
+  }
+  .container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

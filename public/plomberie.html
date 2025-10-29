@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services de Plomberie - Zghal Climatisation</title>
+    <meta name="description" content="Services de plomberie générale à Tunis, Sfax, et Sousse. Réparation de fuites, installation sanitaire, et débouchage.">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="service-page.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Zghal Climatisation</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Accueil</a></li>
+                    <li><a href="/#services" class="nav__link">Services</a></li>
+                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header__contact">
+                <span class="header__phone">📞 44 882 490</span>
+                <a href="/contact.html" class="button button--small">Devis Gratuit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="service-hero">
+            <div class="service-hero__overlay"></div>
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop" alt="Plomberie" class="service-hero__image">
+            <div class="service-hero__content container">
+                <h1 class="service-hero__title">Plomberie</h1>
+            </div>
+        </section>
+
+        <section class="section service-details">
+            <div class="container service-details__grid">
+                <div class="service-details__description">
+                    <h2>Une solution à chaque fuite, une installation pour chaque besoin.</h2>
+                    <p>
+                        Les problèmes de plomberie peuvent causer des dégâts importants et perturber votre quotidien. Qu'il s'agisse d'une fuite mineure ou d'une installation complète, notre équipe d'experts en plomberie est prête à intervenir avec rapidité et efficacité.
+                    </p>
+                    <h3>Nos prestations de plomberie incluent :</h3>
+                    <ul>
+                        <li><i class='bx bx-check-shield'></i> Recherche et réparation de tous types de fuites d'eau.</li>
+                        <li><i class='bx bx-check-shield'></i> Installation et rénovation de salles de bains et cuisines (robinetterie, sanitaires ).</li>
+                        <li><i class='bx bx-check-shield'></i> Débouchage de canalisations et de toilettes.</li>
+                        <li><i class='bx bx-check-shield'></i> Installation et réparation de chauffe-eaux électriques.</li>
+                    </ul>
+                    <p>
+                        Nous utilisons des matériaux de haute qualité pour garantir des installations durables et conformes aux normes.
+                    </p>
+                </div>
+                <div class="service-details__contact-form">
+                    <h3>Demander ce service</h3>
+                    <form id="service-request-form" class="contact__form" style="box-shadow: none; padding: 0;">
+                        <input type="hidden" name="service" value="Plomberie">
+                        <div class="form__group">
+                            <label for="name">Votre Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="phone">Votre Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="city">Votre Ville</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
+                    </form>
+                    <div id="form-feedback" style="margin-top: 1rem; text-align: center;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="form-submit.js"></script>
+</body>
+</html>
