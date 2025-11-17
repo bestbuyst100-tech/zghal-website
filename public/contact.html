@@ -4,104 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Zghal Climatisation</title>
+    <meta name="description" content="Contactez Zghal Climatisation pour un devis gratuit. Nous intervenons à Tunis, Sfax et Sousse.">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav container">
-            <a href="/" class="nav__logo">Zghal Climatisation</a>
-            <div class="nav__menu">
+            <a href="/" class="nav__logo">
+                <img src="/logo.png" alt="Zghal Climatisation Logo" style="height: 40px;">
+            </a>
+            <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li><a href="/" class="nav__link">Accueil</a></li>
-                    <li><a href="/#services" class="nav__link">Services</a></li>
-                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
-                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="/" class="nav__link">Accueil</a></li>
+                    <li class="nav__item"><a href="/#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li class="nav__item"><a href="/contact.html" class="nav__link">Contact</a></li>
                 </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
             </div>
             <div class="header__contact">
                 <span class="header__phone">📞 44 882 490</span>
                 <a href="/contact.html" class="button button--small">Devis Gratuit</a>
             </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
         </nav>
     </header>
 
-    <main class="section">
-        <div class="container" style="max-width: 768px;">
+    <main>
+        <section class="section container">
             <h1 class="section__title">Contactez-nous</h1>
-            <p class="section__subtitle">Pour toute demande de devis ou d'information, veuillez remplir le formulaire ci-dessous.</p>
-            
-            <form id="contact-form" class="contact__form">
-                <div class="form__group">
-                    <label for="name">Votre Nom</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form__group">
-                    <label for="phone">Votre Téléphone</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form__group">
-                    <label for="city">Votre Ville</label>
-                    <input type="text" id="city" name="city" required>
-                </div>
-                <div class="form__group">
-                    <label for="service">Service Souhaité</label>
-                    <select id="service" name="service" required>
-                        <option value="" disabled selected>-- Choisissez un service --</option>
-                        <option value="Climatisation">Climatisation</option>
-                        <option value="Chauffage Central">Chauffage Central</option>
-                        <option value="Plomberie">Plomberie</option>
-                        <option value="Gaz de ville">Gaz de ville</option>
-                        <option value="Chaudière">Chaudière</option>
-                        <option value="Réparation Electroménager">Réparation Electroménager</option>
-                        <option value="Autre">Autre</option>
-                    </select>
-                </div>
-                <div class="form__group">
-                    <label for="notes">Votre Message (Optionnel)</label>
-                    <textarea id="notes" name="notes" rows="5"></textarea>
-                </div>
-                <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
-            </form>
-            <div id="form-feedback" style="margin-top: 1.5rem; text-align: center;"></div>
-        </div>
+            <p class="section__subtitle">Remplissez le formulaire ci-dessous pour toute demande de devis ou d'information.</p>
+
+            <div class="contact__container">
+                <form id="devis-form" class="contact__form">
+                    <div class="form__group">
+                        <label for="service" class="form__label">Type de Service</label>
+                        <select id="service" name="service" class="form__input" required>
+                            <option value="Climatisation">Climatisation</option>
+                            <option value="Chauffage Central">Chauffage Central</option>
+                            <option value="Chaudiere">Chaudière</option> 
+                            <option value="Plomberie">Plomberie</option>
+                            <option value="Gaz de Ville">Gaz de Ville</option>
+                            <option value="Réparation Électroménager">Réparation Électroménager</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label for="name" class="form__label">Nom Complet</label>
+                        <input type="text" id="name" name="name" class="form__input" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="phone" class="form__label">Numéro de Téléphone</label>
+                        <input type="tel" id="phone" name="phone" class="form__input" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="city" class="form__label">Ville d'intervention</label>
+                        <select id="city" name="city" class="form__input" required>
+                            <option value="Tunis">Tunis</option>
+                            <option value="Sfax">Sfax</option>
+                            <option value="Sousse">Sousse</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label for="notes" class="form__label">Description de votre besoin</label>
+                        <textarea id="notes" name="notes" rows="5" class="form__input"></textarea>
+                    </div>
+                    <button type="submit" class="button button--flex">
+                        Envoyer la Demande
+                        <i class='bx bx-send button__icon'></i>
+                    </button>
+                </form>
+                <div id="form-message"></div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
         <div class="footer__container container">
+            <div class="footer__socials">
+                <a href="https://www.facebook.com/share/1ANse2h2HH/" target="_blank" class="footer__social-link"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.instagram.com/zghal_climatisation?igsh=Z2UyN3M1cGs1cjdz" target="_blank" class="footer__social-link"><i class='bx bxl-instagram-alt'></i></a>
+            </div>
             <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+            <p>Contact: zghalclimatisation@gmail.com | Tél: 44 882 490 / 94 130 780</p>
         </div>
     </footer>
 
     <script>
-        const form = document.getElementById('contact-form');
-        const feedbackDiv = document.getElementById('form-feedback');
-        
-        form.addEventListener('submit', async (e) => {
+        const form = document.getElementById('devis-form' );
+        const formMessage = document.getElementById('form-message');
+
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
-            
-            feedbackDiv.textContent = 'Envoi en cours...';
-            feedbackDiv.style.color = 'black';
 
-            try {
-                const response = await fetch('/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
+            formMessage.textContent = 'Envoi en cours...';
+            formMessage.style.color = '#333';
 
+            fetch('/send-devis', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
                 if (response.ok) {
                     form.reset();
-                    feedbackDiv.innerHTML = '<p style="color: green; font-weight: bold;">Merci! Votre demande a été envoyée. Nous vous contacterons bientôt.</p>';
+                    formMessage.textContent = 'Merci! Votre demande a été envoyée avec succès. Nous vous contacterons bientôt.';
+                    formMessage.style.color = 'green';
                 } else {
-                    throw new Error('Erreur du serveur.');
+                    throw new Error('Network response was not ok.');
                 }
-            } catch (error) {
-                console.error('Fetch error:', error);
-                feedbackDiv.innerHTML = '<p style="color: red; font-weight: bold;">Une erreur de connexion est survenue. Veuillez réessayer.</p>';
-            }
+            })
+            .catch(error => {
+                formMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+                formMessage.style.color = 'red';
+            });
         });
     </script>
+    <script src="/main.js"></script>
 </body>
 </html>

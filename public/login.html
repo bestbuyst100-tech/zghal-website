@@ -5,36 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Zghal Climatisation</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour la page de login */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .login-container {
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-container .section__title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="/" class="nav__logo">Zghal Climatisation</a>
-        </nav>
-    </header>
+    <div class="login-container">
+        <h1 class="section__title">Accès Administrateur</h1>
+        <form id="login-form" class="contact__form">
+            <div class="form__group">
+                <label for="username" class="form__label">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" class="form__input" required>
+            </div>
+            <div class="form__group">
+                <label for="password" class="form__label">Mot de passe</label>
+                <input type="password" id="password" name="password" class="form__input" required>
+            </div>
+            <button type="submit" class="button button--flex" style="width: 100%;">
+                Se Connecter
+            </button>
+        </form>
+        <div id="login-message" style="text-align: center; margin-top: 1rem; color: red;"></div>
+    </div>
 
-    <main class="section">
-        <div class="container" style="max-width: 480px;">
-            <h1 class="section__title">Accès Administrateur</h1>
-            
-            <form action="/login" method="POST" class="contact__form">
-                <div class="form__group">
-                    <label for="username">Nom d'utilisateur</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form__group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="button" style="width: 100%;">Se Connecter</button>
-            </form>
-        </div>
-    </main>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-    <footer class="footer">
-        <div class="footer__container container">
-            <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
-        </div>
-    </footer>
+            const form = e.target;
+            const messageDiv = document.getElementById('login-message');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            messageDiv.textContent = ''; // Vider le message d'erreur précédent
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Si le serveur dit que c'est un succès, on redirige vers le dashboard
+                    window.location.href = '/dashboard.html';
+                } else {
+                    // Sinon, on affiche un message d'erreur
+                    messageDiv.textContent = 'Nom d\'utilisateur ou mot de passe incorrect.';
+                }
+            })
+            .catch(error => {
+                // En cas d'erreur de connexion au serveur
+                console.error('Erreur de connexion:', error);
+                messageDiv.textContent = 'Erreur de connexion au serveur. Veuillez réessayer.';
+            });
+        });
+    </script>
 </body>
 </html>

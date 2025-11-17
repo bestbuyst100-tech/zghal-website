@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier le Produit - Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/dashboard.css">
 </head>
 <body>
     <header class="header">
@@ -27,15 +27,15 @@
                 <input type="hidden" id="productId">
                 <div class="form__group">
                     <label for="name">Nom du produit</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" class="form__input" required>
                 </div>
                 <div class="form__group">
                     <label for="price">Prix (TND)</label>
-                    <input type="number" id="price" name="price" step="0.01" required>
+                    <input type="number" id="price" name="price" step="0.01" class="form__input" required>
                 </div>
                 <div class="form__group">
                     <label for="description">Description</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <textarea id="description" name="description" rows="4" class="form__input" required></textarea>
                 </div>
                 <div class="form__group">
                     <label for="image">Changer l'image (Optionnel)</label>
@@ -61,6 +61,12 @@
 
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
+            
+            if (!productId) {
+                form.innerHTML = '<p style="color: red; text-align: center;">Aucun ID de produit fourni. Retournez à la liste et réessayez.</p>';
+                return;
+            }
+            
             productIdInput.value = productId;
 
             // --- جلب بيانات المنتج الحالية ---
@@ -73,6 +79,7 @@
                 priceInput.value = product.price;
                 descriptionInput.value = product.description;
                 currentImage.src = product.imageUrl;
+                currentImage.alt = `Image actuelle de ${product.name}`;
 
             } catch (error) {
                 form.innerHTML = `<p style="color: red;">${error.message}</p>`;

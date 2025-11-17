@@ -4,76 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Installation et Réparation Chaudière - Zghal Climatisation</title>
-    <meta name="description" content="Service de maintenance, réparation et installation de chaudières murales et au sol, et de chauffe-eaux.">
+    <meta name="description" content="Service expert pour l'installation, la maintenance et la réparation de chaudières à gaz. Sécurité et performance garanties.">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="service-page.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav container">
-            <a href="/" class="nav__logo">Zghal Climatisation</a>
-            <div class="nav__menu">
+            <a href="/" class="nav__logo">
+                <img src="/logo.png" alt="Zghal Climatisation Logo" style="height: 40px;">
+            </a>
+            <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li><a href="/" class="nav__link">Accueil</a></li>
-                    <li><a href="/#services" class="nav__link">Services</a></li>
-                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
-                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="/" class="nav__link">Accueil</a></li>
+                    <li class="nav__item"><a href="/#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li class="nav__item"><a href="/contact.html" class="nav__link">Contact</a></li>
                 </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
             </div>
             <div class="header__contact">
                 <span class="header__phone">📞 44 882 490</span>
                 <a href="/contact.html" class="button button--small">Devis Gratuit</a>
             </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section class="service-hero">
-            <div class="service-hero__overlay"></div>
-            <img src="https://plus.unsplash.com/premium_photo-1661371972523-8b3557459143?q=80&w=2070&auto=format&fit=crop" alt="Chaudière" class="service-hero__image">
-            <div class="service-hero__content container">
-                <h1 class="service-hero__title">Chaudière & Chauffe-eau</h1>
-            </div>
-        </section>
-
-        <section class="section service-details">
-            <div class="container service-details__grid">
-                <div class="service-details__description">
-                    <h2>Le cœur de votre système de chauffage et d'eau chaude.</h2>
-                    <p>
-                        Une chaudière ou un chauffe-eau en panne peut rapidement devenir un problème majeur, surtout en hiver. Nous offrons un service complet pour assurer le bon fonctionnement de vos équipements, de l'installation à la maintenance annuelle.
-                    </p>
-                    <h3>Nos prestations pour chaudières et chauffe-eaux :</h3>
-                    <ul>
-                        <li><i class='bx bx-check-shield'></i> Installation de chaudières murales et au sol (gaz, mazout ).</li>
-                        <li><i class='bx bx-check-shield'></i> Réparation et dépannage rapide de toutes les marques.</li>
-                        <li><i class='bx bx-check-shield'></i> Contrats de maintenance annuelle pour prévenir les pannes et optimiser la performance.</li>
-                        <li><i class='bx bx-check-shield'></i> Installation et réparation de chauffe-eaux électriques et à gaz.</li>
-                    </ul>
-                    <p>
-                        Un entretien régulier prolonge la durée de vie de vos appareils et vous fait économiser de l'énergie.
-                    </p>
+        <section class="section container">
+            <h1 class="section__title">Installation et Réparation de Chaudières</h1>
+            <div class="service-page__container">
+                <div class="service-page__image">
+                    <img src="chaudiere.jpg" alt="Installation de chaudière">
                 </div>
-                <div class="service-details__contact-form">
-                    <h3>Demander ce service</h3>
-                    <form id="service-request-form" class="contact__form" style="box-shadow: none; padding: 0;">
-                        <input type="hidden" name="service" value="Chaudière / Chauffe-eau">
-                        <div class="form__group">
-                            <label for="name">Votre Nom</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="phone">Votre Téléphone</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="city">Votre Ville</label>
-                            <input type="text" id="city" name="city" required>
-                        </div>
-                        <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
-                    </form>
-                    <div id="form-feedback" style="margin-top: 1rem; text-align: center;"></div>
+                <div class="service-page__content">
+                    <h2>Votre source de chaleur, notre expertise</h2>
+                    <p>
+                        La chaudière est le cœur de votre système de chauffage central et de production d'eau chaude. Une installation correcte et un entretien régulier sont cruciaux pour sa performance et votre sécurité.
+                    </p>
+                    <h3>Nos prestations pour chaudières :</h3>
+                    <ul>
+                        <li><i class='bx bx-check-square'></i> Installation de chaudières murales et au sol, toutes marques.</li>
+                        <li><i class='bx bx-check-square'></i> Réparation et dépannage urgent pour tous types de pannes.</li>
+                        <li><i class='bx bx-check-square'></i> Contrats d'entretien annuel pour prévenir les pannes et optimiser la consommation.</li>
+                        <li><i class='bx bx-check-square'></i> Remplacement de pièces défectueuses (brûleur, circulateur, etc. ).</li>
+                    </ul>
+                    <a href="/contact.html?service=Chaudiere" class="button button--flex">
+                        Devis pour votre Chaudière
+                        <i class='bx bx-right-arrow-alt button__icon'></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -81,10 +65,15 @@
 
     <footer class="footer">
         <div class="footer__container container">
+            <div class="footer__socials">
+                <a href="https://www.facebook.com/share/1ANse2h2HH/" target="_blank" class="footer__social-link"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.instagram.com/zghal_climatisation?igsh=Z2UyN3M1cGs1cjdz" target="_blank" class="footer__social-link"><i class='bx bxl-instagram-alt'></i></a>
+            </div>
             <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+            <p>Contact: zghalclimatisation@gmail.com | Tél: 44 882 490 / 94 130 780</p>
         </div>
     </footer>
 
-    <script src="form-submit.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>

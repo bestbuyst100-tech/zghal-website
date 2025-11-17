@@ -4,88 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vente de Matériel - Zghal Climatisation</title>
+    <meta name="description" content="Achetez du matériel de climatisation et de chauffage de qualité. Commande simple et rapide.">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="vente.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav container">
-            <a href="/" class="nav__logo">Zghal Climatisation</a>
-            <div class="nav__menu">
+            <a href="/" class="nav__logo">
+                <img src="/logo.png" alt="Zghal Climatisation Logo" style="height: 40px;">
+            </a>
+            <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li><a href="/" class="nav__link">Accueil</a></li>
-                    <li><a href="/#services" class="nav__link">Services</a></li>
-                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
-                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="/" class="nav__link">Accueil</a></li>
+                    <li class="nav__item"><a href="/#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li class="nav__item"><a href="/contact.html" class="nav__link">Contact</a></li>
                 </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
             </div>
             <div class="header__contact">
                 <span class="header__phone">📞 44 882 490</span>
                 <a href="/contact.html" class="button button--small">Devis Gratuit</a>
             </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
         </nav>
     </header>
 
-    <main class="section">
-        <div class="container">
-            <h1 class="section__title">Nos Produits Disponibles à la Vente</h1>
-            <p class="section__subtitle">Matériel de haute qualité pour vos installations de climatisation et de chauffage.</p>
-            
-            <div id="product-list-vente" class="vente-grid">
-                <!-- المنتجات ستظهر هنا بواسطة JavaScript -->
+    <main>
+        <section class="section container">
+            <h1 class="section__title">Vente de Matériel de Climatisation et Chauffage</h1>
+            <p class="section__subtitle">Parcourez notre sélection de produits de qualité. Commandez en quelques clics.</p>
+            <div id="product-list" class="vente__grid">
+                <!-- Les produits seront chargés ici par JavaScript -->
             </div>
-        </div>
+            <div id="loading-message" style="text-align: center; padding: 2rem; font-size: 1.2rem;">
+                Chargement des produits...
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
         <div class="footer__container container">
+            <div class="footer__socials">
+                <a href="https://www.facebook.com/share/1ANse2h2HH/" target="_blank" class="footer__social-link"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.instagram.com/zghal_climatisation?igsh=Z2UyN3M1cGs1cjdz" target="_blank" class="footer__social-link"><i class='bx bxl-instagram-alt'></i></a>
+            </div>
             <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+            <p>Contact: zghalclimatisation@gmail.com | Tél: 44 882 490 / 94 130 780</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const productListDiv = document.getElementById('product-list-vente');
+        document.addEventListener('DOMContentLoaded', ( ) => {
+            const productList = document.getElementById('product-list');
+            const loadingMessage = document.getElementById('loading-message');
 
-            async function fetchAndDisplayProducts() {
-                productListDiv.innerHTML = '<p>Chargement des produits...</p>';
-
-                try {
-                    const response = await fetch('/api/products');
-                    if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
-                    
-                    const products = await response.json();
-                    productListDiv.innerHTML = ''; 
-
+            fetch('/api/products')
+                .then(response => response.json())
+                .then(products => {
+                    loadingMessage.style.display = 'none';
                     if (products.length === 0) {
-                        productListDiv.innerHTML = '<p>Aucun produit disponible à la vente pour le moment.</p>';
+                        productList.innerHTML = '<p style="text-align: center;">Aucun produit disponible pour le moment.</p>';
                         return;
                     }
-
                     products.forEach(product => {
+                        const productName = `${product.name} (${product.price} TND)`;
                         const productCard = document.createElement('div');
-                        productCard.className = 'product-card-vente';
-                        
+                        productCard.className = 'product-card';
                         productCard.innerHTML = `
-                            <img src="${product.imageUrl}" alt="${product.name}" class="product-card-vente__image">
-                            <div class="product-card-vente__content">
-                                <h3 class="product-card-vente__title">${product.name}</h3>
-                                <p class="product-card-vente__description">${product.description}</p>
-                                <div class="product-card-vente__footer">
-                                    <span class="product-card-vente__price">${product.price} TND</span>
-                                    <a href="/commander.html?produit=${encodeURIComponent(product.name + ' (' + product.price + ' TND)')}" class="button button--small">Commander</a>
+                            <img src="${product.imageUrl}" alt="${product.name}" class="product-card__image">
+                            <div class="product-card__content">
+                                <h3 class="product-card__title">${product.name}</h3>
+                                <p class="product-card__description">${product.description}</p>
+                                <div class="product-card__footer">
+                                    <span class="product-card__price">${product.price} TND</span>
+                                    <a href="/commander.html?produit=${encodeURIComponent(productName)}" class="button button--small">Commander</a>
                                 </div>
                             </div>
                         `;
-                        productListDiv.appendChild(productCard);
+                        productList.appendChild(productCard);
                     });
-                } catch (error) {
-                    productListDiv.innerHTML = `<p style="color: red; font-weight: bold;">Impossible de charger les produits. Veuillez réessayer plus tard.</p>`;
-                    console.error('Erreur:', error);
-                }
-            }
-            fetchAndDisplayProducts();
+                })
+                .catch(error => {
+                    loadingMessage.textContent = 'Impossible de charger les produits. Veuillez réessayer plus tard.';
+                    console.error('Error fetching products:', error);
+                });
         });
     </script>
+    <script src="/main.js"></script>
 </body>
 </html>

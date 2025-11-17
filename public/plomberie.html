@@ -3,77 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services de Plomberie - Zghal Climatisation</title>
-    <meta name="description" content="Services de plomberie générale à Tunis, Sfax, et Sousse. Réparation de fuites, installation sanitaire, et débouchage.">
+    <title>Service Plomberie - Zghal Climatisation</title>
+    <meta name="description" content="Tous travaux de plomberie, réparation de fuites, débouchage de canalisations et installation d'équipements sanitaires.">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="service-page.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav container">
-            <a href="/" class="nav__logo">Zghal Climatisation</a>
-            <div class="nav__menu">
+            <a href="/" class="nav__logo">
+                <img src="/logo.png" alt="Zghal Climatisation Logo" style="height: 40px;">
+            </a>
+            <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li><a href="/" class="nav__link">Accueil</a></li>
-                    <li><a href="/#services" class="nav__link">Services</a></li>
-                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
-                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="/" class="nav__link">Accueil</a></li>
+                    <li class="nav__item"><a href="/#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li class="nav__item"><a href="/contact.html" class="nav__link">Contact</a></li>
                 </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
             </div>
             <div class="header__contact">
                 <span class="header__phone">📞 44 882 490</span>
                 <a href="/contact.html" class="button button--small">Devis Gratuit</a>
             </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section class="service-hero">
-            <div class="service-hero__overlay"></div>
-            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop" alt="Plomberie" class="service-hero__image">
-            <div class="service-hero__content container">
-                <h1 class="service-hero__title">Plomberie</h1>
-            </div>
-        </section>
-
-        <section class="section service-details">
-            <div class="container service-details__grid">
-                <div class="service-details__description">
-                    <h2>Une solution à chaque fuite, une installation pour chaque besoin.</h2>
-                    <p>
-                        Les problèmes de plomberie peuvent causer des dégâts importants et perturber votre quotidien. Qu'il s'agisse d'une fuite mineure ou d'une installation complète, notre équipe d'experts en plomberie est prête à intervenir avec rapidité et efficacité.
-                    </p>
-                    <h3>Nos prestations de plomberie incluent :</h3>
-                    <ul>
-                        <li><i class='bx bx-check-shield'></i> Recherche et réparation de tous types de fuites d'eau.</li>
-                        <li><i class='bx bx-check-shield'></i> Installation et rénovation de salles de bains et cuisines (robinetterie, sanitaires ).</li>
-                        <li><i class='bx bx-check-shield'></i> Débouchage de canalisations et de toilettes.</li>
-                        <li><i class='bx bx-check-shield'></i> Installation et réparation de chauffe-eaux électriques.</li>
-                    </ul>
-                    <p>
-                        Nous utilisons des matériaux de haute qualité pour garantir des installations durables et conformes aux normes.
-                    </p>
+        <section class="section container">
+            <h1 class="section__title">Service de Plomberie</h1>
+            <div class="service-page__container">
+                <div class="service-page__image">
+                    <img src="plomberie.jpg" alt="Service de Plomberie">
                 </div>
-                <div class="service-details__contact-form">
-                    <h3>Demander ce service</h3>
-                    <form id="service-request-form" class="contact__form" style="box-shadow: none; padding: 0;">
-                        <input type="hidden" name="service" value="Plomberie">
-                        <div class="form__group">
-                            <label for="name">Votre Nom</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="phone">Votre Téléphone</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="city">Votre Ville</label>
-                            <input type="text" id="city" name="city" required>
-                        </div>
-                        <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
-                    </form>
-                    <div id="form-feedback" style="margin-top: 1rem; text-align: center;"></div>
+                <div class="service-page__content">
+                    <h2>Des installations sanitaires fiables et durables</h2>
+                    <p>
+                        Une fuite d'eau ou une canalisation bouchée ? Besoin d'installer de nouveaux équipements sanitaires ? Notre équipe de plombiers qualifiés intervient rapidement pour résoudre tous vos problèmes de plomberie avec efficacité.
+                    </p>
+                    <h3>Nos prestations incluent :</h3>
+                    <ul>
+                        <li><i class='bx bx-check-square'></i> Recherche et réparation de fuites d'eau.</li>
+                        <li><i class='bx bx-check-square'></i> Débouchage de canalisations (éviers, toilettes, douches ).</li>
+                        <li><i class='bx bx-check-square'></i> Installation et remplacement de robinetterie, chauffe-eau, et sanitaires.</li>
+                        <li><i class='bx bx-check-square'></i> Rénovation complète de salles de bain et cuisines.</li>
+                    </ul>
+                    <a href="/contact.html?service=Plomberie" class="button button--flex">
+                        Demander un Devis pour la Plomberie
+                        <i class='bx bx-right-arrow-alt button__icon'></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -81,10 +65,15 @@
 
     <footer class="footer">
         <div class="footer__container container">
+            <div class="footer__socials">
+                <a href="https://www.facebook.com/share/1ANse2h2HH/" target="_blank" class="footer__social-link"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.instagram.com/zghal_climatisation?igsh=Z2UyN3M1cGs1cjdz" target="_blank" class="footer__social-link"><i class='bx bxl-instagram-alt'></i></a>
+            </div>
             <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+            <p>Contact: zghalclimatisation@gmail.com | Tél: 44 882 490 / 94 130 780</p>
         </div>
     </footer>
 
-    <script src="form-submit.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>

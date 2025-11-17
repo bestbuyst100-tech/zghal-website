@@ -3,77 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service de Chauffage Central - Zghal Climatisation</title>
-    <meta name="description" content="Installation, réparation et maintenance de systèmes de chauffage central à Tunis, Sfax, et Sousse. Radiateurs, chaudières, et plus.">
+    <title>Service Chauffage Central - Zghal Climatisation</title>
+    <meta name="description" content="Installation et maintenance de systèmes de chauffage central, chaudières et radiateurs pour un hiver confortable.">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="service-page.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav container">
-            <a href="/" class="nav__logo">Zghal Climatisation</a>
-            <div class="nav__menu">
+            <a href="/" class="nav__logo">
+                <img src="/logo.png" alt="Zghal Climatisation Logo" style="height: 40px;">
+            </a>
+            <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li><a href="/" class="nav__link">Accueil</a></li>
-                    <li><a href="/#services" class="nav__link">Services</a></li>
-                    <li><a href="/vente.html" class="nav__link">Vente</a></li>
-                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="/" class="nav__link">Accueil</a></li>
+                    <li class="nav__item"><a href="/#services" class="nav__link">Services</a></li>
+                    <li class="nav__item"><a href="/vente.html" class="nav__link">Vente</a></li>
+                    <li class="nav__item"><a href="/contact.html" class="nav__link">Contact</a></li>
                 </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
             </div>
             <div class="header__contact">
                 <span class="header__phone">📞 44 882 490</span>
                 <a href="/contact.html" class="button button--small">Devis Gratuit</a>
             </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section class="service-hero">
-            <div class="service-hero__overlay"></div>
-            <img src="https://images.unsplash.com/photo-1617103995837-883418533846?q=80&w=1932&auto=format&fit=crop" alt="Chauffage Central" class="service-hero__image">
-            <div class="service-hero__content container">
-                <h1 class="service-hero__title">Chauffage Central</h1>
-            </div>
-        </section>
-
-        <section class="section service-details">
-            <div class="container service-details__grid">
-                <div class="service-details__description">
-                    <h2>Une chaleur douce et homogène dans tout votre foyer.</h2>
-                    <p>
-                        Le chauffage central est la solution idéale pour un confort thermique optimal durant l'hiver. Nous vous proposons des solutions complètes, de l'étude à l'installation, en passant par la maintenance de votre système.
-                    </p>
-                    <h3>Nos prestations de chauffage central incluent :</h3>
-                    <ul>
-                        <li><i class='bx bx-check-shield'></i> Étude et conception de votre installation de chauffage.</li>
-                        <li><i class='bx bx-check-shield'></i> Installation de chaudières, radiateurs et planchers chauffants.</li>
-                        <li><i class='bx bx-check-shield'></i> Maintenance annuelle et dépannage de votre système.</li>
-                        <li><i class='bx bx-check-shield'></i> Optimisation de votre installation pour des économies d'énergie.</li>
-                    </ul>
-                    <p>
-                        Profitez d'un hiver au chaud grâce à notre expertise en chauffage central.
-                    </p>
+        <section class="section container">
+            <h1 class="section__title">Service de Chauffage Central</h1>
+            <div class="service-page__container">
+                <div class="service-page__image">
+                    <img src="chauffage.jpg">
                 </div>
-                <div class="service-details__contact-form">
-                    <h3>Demander ce service</h3>
-                    <form id="service-request-form" class="contact__form" style="box-shadow: none; padding: 0;">
-                        <input type="hidden" name="service" value="Chauffage Central">
-                        <div class="form__group">
-                            <label for="name">Votre Nom</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="phone">Votre Téléphone</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="city">Votre Ville</label>
-                            <input type="text" id="city" name="city" required>
-                        </div>
-                        <button type="submit" class="button" style="width: 100%;">Envoyer la demande</button>
-                    </form>
-                    <div id="form-feedback" style="margin-top: 1rem; text-align: center;"></div>
+                <div class="service-page__content">
+                    <h2>Une chaleur douce et homogène pour votre foyer</h2>
+                    <p>
+                        Le chauffage central est la solution idéale pour garantir une chaleur confortable et bien répartie dans toute votre maison ou vos locaux professionnels. Nous maîtrisons l'installation et la maintenance de tous les composants du système.
+                    </p>
+                    <h3>Nos prestations incluent :</h3>
+                    <ul>
+                        <li><i class='bx bx-check-square'></i> Installation complète de systèmes de chauffage central (chaudière, tuyauterie, radiateurs ).</li>
+                        <li><i class='bx bx-check-square'></i> Remplacement et modernisation de chaudières anciennes pour plus d'efficacité.</li>
+                        <li><i class='bx bx-check-square'></i> Maintenance annuelle et contrats d'entretien pour un fonctionnement optimal.</li>
+                        <li><i class='bx bx-check-square'></i> Purge et désembouage des radiateurs pour améliorer le rendement.</li>
+                    </ul>
+                    <a href="/contact.html?service=Chauffage+Central" class="button button--flex">
+                        Demander un Devis pour le Chauffage
+                        <i class='bx bx-right-arrow-alt button__icon'></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -81,10 +65,15 @@
 
     <footer class="footer">
         <div class="footer__container container">
+            <div class="footer__socials">
+                <a href="https://www.facebook.com/share/1ANse2h2HH/" target="_blank" class="footer__social-link"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.instagram.com/zghal_climatisation?igsh=Z2UyN3M1cGs1cjdz" target="_blank" class="footer__social-link"><i class='bx bxl-instagram-alt'></i></a>
+            </div>
             <p>&copy; 2025 Zghal Climatisation. Tous droits réservés.</p>
+            <p>Contact: zghalclimatisation@gmail.com | Tél: 44 882 490 / 94 130 780</p>
         </div>
     </footer>
 
-    <script src="form-submit.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>
